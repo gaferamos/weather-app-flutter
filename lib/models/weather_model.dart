@@ -1,4 +1,3 @@
-
 class WeatherData {
   final double temperature;
   final String condition;
@@ -49,8 +48,7 @@ class WeatherData {
     int smallestDifference = 999999999;
 
     for (int i = 0; i < hourlyTimes.length; i++) {
-      final difference =
-          hourlyTimes[i].difference(currentTime).inMinutes.abs();
+      final difference = hourlyTimes[i].difference(currentTime).inMinutes.abs();
 
       if (difference < smallestDifference) {
         smallestDifference = difference;
@@ -108,8 +106,7 @@ class WeatherData {
       condition: getWeatherCondition(
         (current['weather_code'] as num).toInt(),
       ),
-      humidity:
-          (current['relative_humidity_2m'] as num).toDouble(),
+      humidity: (current['relative_humidity_2m'] as num).toDouble(),
       windSpeed: (current['wind_speed_10m'] as num).toDouble(),
       uvIndex: getHourlyValue(uvValues),
       pressure: (current['pressure_msl'] as num).toDouble(),
@@ -131,49 +128,49 @@ class WeatherData {
   static String getWeatherCondition(int code) {
     switch (code) {
       case 0:
-        return 'Clear Sky';
+        return 'Céu Limpo';
       case 1:
-        return 'Mainly Clear';
+        return 'Predominantemente Limpo';
       case 2:
-        return 'Partly Cloudy';
+        return 'Parcialmente Nublado';
       case 3:
-        return 'Overcast';
+        return 'Encoberto';
       case 45:
       case 48:
-        return 'Foggy';
+        return 'Nevoeiro';
       case 51:
       case 53:
       case 55:
-        return 'Drizzle';
+        return 'Garoa';
       case 56:
       case 57:
-        return 'Freezing Drizzle';
+        return 'Garoa Congelante';
       case 61:
       case 63:
       case 65:
-        return 'Rainy';
+        return 'Chuva';
       case 66:
       case 67:
-        return 'Freezing Rain';
+        return 'Chuva Congelante';
       case 71:
       case 73:
       case 75:
       case 77:
-        return 'Snowy';
+        return 'Neve';
       case 80:
       case 81:
       case 82:
-        return 'Rain Showers';
+        return 'Pancadas de Chuva';
       case 85:
       case 86:
-        return 'Snow Showers';
+        return 'Pancadas de Neve';
       case 95:
-        return 'Thunderstorm';
+        return 'Trovoada';
       case 96:
       case 99:
-        return 'Thunderstorm with Hail';
+        return 'Trovoada com Granizo';
       default:
-        return 'Unknown Weather';
+        return 'Condição Desconhecida';
     }
   }
 }
